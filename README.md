@@ -1,1 +1,1 @@
-nRF51 cordova
+![](nrf51-cordova.png)

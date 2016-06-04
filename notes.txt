@@ -1,0 +1,4 @@
+sudo cordova create nrf51HRM com.electronut.nrf51HRM nrf51HRM
+sudo cordova plugin add cordova-plugin-ble-central
+sudo cordova platform add android
+sudo chown -R mahesh nrf51HRM/
