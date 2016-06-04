@@ -1,0 +1,22 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-ble-central": {
+            "PACKAGE_NAME": "com.electronut.nrf51HRM"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.electronut.nrf51HRM"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.electronut.nrf51HRM"
+        }
+    }
+}
