@@ -120,41 +120,41 @@ app.status = function(message) {
 // adapted from evothings.com example
 app.plot = function(heartRate) {
 
-	var canvas = document.getElementById('canvas');
-	var context = canvas.getContext('2d');
-	var dataPoints = app.dataPoints;
+  var canvas = document.getElementById('canvas');
+  var context = canvas.getContext('2d');
+  var dataPoints = app.dataPoints;
   var maxLen = 50;
 
   // add data
-	dataPoints.push(heartRate);
+  dataPoints.push(heartRate);
   // cap length
-	if (dataPoints.length > maxLen) {
+  if (dataPoints.length > maxLen) {
     // remove first
     dataPoints.splice(0, 1);
-	}
+  }
 
   // maximum value
-	var maxVal = 400;
+  var maxVal = 400;
 
-	function drawPoints(color)
-	{
+  function drawPoints(color)
+  {
     // draw dots
     context.fillStyle = color;
     context.strokeStyle = color;
     var x = 0;
-		for (var i = dataPoints.length-1; i> 0; i--) {
+    for (var i = dataPoints.length-1; i> 0; i--) {
       context.beginPath();
-			var y = canvas.height - (dataPoints[i] * canvas.height) / maxVal;
+      var y = canvas.height - (dataPoints[i] * canvas.height) / maxVal;
       context.arc(x, y, 4, 0, 2 * Math.PI);
       context.fill();
-			x += 10;
-		}
-	}
+      x += 10;
+    }
+  }
 
   // clear previous
-	context.clearRect(0, 0, canvas.width, canvas.height);
+  context.clearRect(0, 0, canvas.width, canvas.height);
 
-	drawPoints("green");
+  drawPoints("green");
 };
 
 
@@ -165,16 +165,16 @@ $(document).ready( function()
 {
   // canvas resize callback
   resizeCanvas = function () {
-  	var canvas = $('#canvas');
-  	var container = $(canvas).parent();
-  	canvas.attr('width', $(container).width() ); // Max width
+    var canvas = $('#canvas');
+    var container = $(canvas).parent();
+    canvas.attr('width', $(container).width() ); // Max width
   };
 
-	// Adjust canvas size when browser resizes
-	$(window).resize( resizeCanvas );
+  // Adjust canvas size when browser resizes
+  $(window).resize( resizeCanvas );
 
-	// Adjust the canvas size when the document has loaded.
-	resizeCanvas();
+  // Adjust the canvas size when the document has loaded.
+  resizeCanvas();
 
   // AJAX callback
   function onDataReceived(jsonData) {
@@ -185,8 +185,8 @@ $(document).ready( function()
     app.status("Ajax error!");
   }
 
-	// get data from server
-	function getData() {
+  // get data from server
+  function getData() {
     if(app.connected) {
       // prepare thingspeak URL
       // set up a thingspeak channel and change the write key below
@@ -201,17 +201,17 @@ $(document).ready( function()
         error: onError
       });
     }
-	}
-	// define an update function
-	var count = 0;
-	function update() {
-		// get data
-		getData();
-		// set timeout - thingspeak can only update every 15 seconds
-		setTimeout(update, 16000);
-	}
+  }
+  // define an update function
+  var count = 0;
+  function update() {
+    // get data
+    getData();
+    // set timeout - thingspeak can only update every 15 seconds
+    setTimeout(update, 16000);
+  }
      // call update
-	update();
+  update();
 
 });
 
